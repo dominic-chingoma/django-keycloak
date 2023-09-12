@@ -103,3 +103,6 @@ ENV/
 .idea
 db.sqlite3
 .pytest_cache
+.DS_Store
+*.DS_Store
+*/.DS_Store
