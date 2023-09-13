@@ -35,7 +35,7 @@ def refresh_certs(realm):
     openid_api_client = KeycloakRealm(
         server_url=server_url, realm_name=realm.name
     ).open_id_connect(client_id="", client_secret="")
-    print(openid_api_client.client.__dict__)
+    print(openid_api_client.client().__dict__)
     print("----------------------")
     realm.certs = realm.client.openid_api_client.certs()
     realm.save(update_fields=["_certs"])
