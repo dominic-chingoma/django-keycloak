@@ -53,7 +53,8 @@ def refresh_well_known_oidc(realm):
     openid_api_client = KeycloakRealm(
         server_url=server_url, realm_name=realm.name
     ).open_id_connect(client_id="", client_secret="")
-    print(openid_api_client)
+    print(openid_api_client.get_path_well_known)
+    print(openid_api_client._well_known)
     print("--------------------")
     print(openid_api_client.well_known.contents)
     print("--------------------")
