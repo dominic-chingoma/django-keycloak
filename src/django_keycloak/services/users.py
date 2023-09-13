@@ -23,7 +23,7 @@ def add_user(client, user):
     """
     credentials = credential_representation_from_hash(hash_=user.password)
 
-    client.realm_api_client.realms.by_name(client.realm.name).users.create(
+    client.admin_api_client.realms.by_name(client.realm.name).users.create(
         username=user.username,
         credentials=credentials,
         first_name=user.first_name,

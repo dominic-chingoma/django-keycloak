@@ -6,6 +6,8 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth import get_user_model
 
 from django_keycloak.models import Realm
+from keycloak.realm import KeycloakRealm
+
 
 import django_keycloak.services.users
 
@@ -35,6 +37,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         user = options["user"]
         realm = options["realm"]
+
+        realm = KeycloakRealm(server_url=realm.server_url, realm_name=realm.name)
 
         django_keycloak.services.users.add_user(
             client=realm.realm_api_client, user=user
