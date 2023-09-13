@@ -17,9 +17,7 @@ def get_realm_api_client(realm):
         # An internal URL is configured. We add some additional settings to let
         # Keycloak think that we access it using the server_url.
         server_url = realm.server.internal_url
-        print(realm.server.internal_url)
         parsed_url = urlparse(realm.server.url)
-        print("url: ", parsed_url)
         headers["Host"] = parsed_url.netloc
 
         if parsed_url.scheme == "https":
@@ -33,7 +31,6 @@ def refresh_certs(realm):
     :param django_keycloak.models.Realm realm:
     :rtype django_keycloak.models.Realm
     """
-    print(realm.jwks_uri.keys())
     realm.certs = realm.client.openid_api_client.certs()
     realm.save(update_fields=["_certs"])
     return realm
