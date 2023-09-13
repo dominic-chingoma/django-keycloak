@@ -48,16 +48,9 @@ def refresh_well_known_oidc(realm):
     server_url = realm.server.internal_url or realm.server.url
 
     # While fetching the well_known we should not use the prepared URL
-    print("realm url: ", server_url)
-    print("realm name: ", realm.name)
     openid_api_client = KeycloakRealm(
         server_url=server_url, realm_name=realm.name
     ).open_id_connect(client_id="", client_secret="")
-    print(openid_api_client.get_path_well_known)
-    print(openid_api_client._well_known)
-    print("--------------------")
-    print(openid_api_client.well_known.contents)
-    print("--------------------")
 
     realm.well_known_oidc = openid_api_client.well_known.contents
     realm.save(update_fields=["_well_known_oidc"])
