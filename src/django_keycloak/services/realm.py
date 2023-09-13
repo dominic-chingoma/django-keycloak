@@ -33,7 +33,7 @@ def refresh_certs(realm):
     :param django_keycloak.models.Realm realm:
     :rtype django_keycloak.models.Realm
     """
-    print(realm.client.__dict__)
+    print(realm.jwks_uri.keys())
     realm.certs = realm.client.openid_api_client.certs()
     realm.save(update_fields=["_certs"])
     return realm
