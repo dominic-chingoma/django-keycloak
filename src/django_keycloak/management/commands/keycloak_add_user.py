@@ -38,7 +38,7 @@ class Command(BaseCommand):
         user = options["user"]
         realm = options["realm"]
 
-        realm = KeycloakRealm(server_url=realm.server_url, realm_name=realm.name)
+        realm = KeycloakRealm(server_url=realm.server, realm_name=realm.name)
 
         django_keycloak.services.users.add_user(
             client=realm.realm_api_client, user=user
