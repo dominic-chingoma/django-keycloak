@@ -50,6 +50,7 @@ def refresh_well_known_oidc(realm):
     # While fetching the well_known we should not use the prepared URL
     print("realm url: ", server_url)
     print("realm name: ", realm.name)
+    raise NameError("testing the realm url: ", server_url)
     openid_api_client = KeycloakRealm(
         server_url=server_url, realm_name=realm.name
     ).open_id_connect(client_id="", client_secret="")
