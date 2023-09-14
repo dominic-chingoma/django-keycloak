@@ -12,7 +12,11 @@ def synchronize_client(client):
 
     :type client: django_keycloak.models.Client
     """
+    print("synchronizing client")
+    print(apps.get_app_configs())
     for app_config in apps.get_app_configs():
+        print("App config")
+        print(app_config.__dict__)
         synchronize_resources(client=client, app_config=app_config)
 
 
