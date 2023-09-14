@@ -34,6 +34,9 @@ def synchronize_resources(client, app_config):
 
     for klass in app_config.get_models():
         scopes = _get_all_permissions(klass._meta)
+        print("------------------------------")
+        print(scopes)
+        print("------------------------------")
 
         try:
             uma1_client.resource_set_create(
