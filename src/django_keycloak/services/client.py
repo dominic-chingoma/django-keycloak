@@ -116,12 +116,15 @@ def get_access_token(client):
     """
 
     oidc_profile = get_service_account_profile(client=client)
+    print("oidc_profile")
+    print(oidc_profile)
 
     try:
         return django_keycloak.services.oidc_profile.get_active_access_token(
             oidc_profile=oidc_profile
         )
     except TokensExpired:
+        print("Token Expired")
         token_reponse, initiate_time = get_new_access_token(client=client)
         oidc_profile = django_keycloak.services.oidc_profile.update_tokens(
             token_model=oidc_profile,
