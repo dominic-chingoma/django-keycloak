@@ -35,7 +35,7 @@ def synchronize_resources(client, app_config):
         return
 
     uma1_client = client.uma1_api_client
-
+    print("uma1_client")
     access_token = django_keycloak.services.client.get_access_token(client=client)
     print("models")
     print(app_config.get_models())
