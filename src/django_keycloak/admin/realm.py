@@ -74,9 +74,8 @@ synchronize_permissions.short_description = "Synchronize permissions"
 
 def synchronize_resources(modeladmin, request, queryset):
     for realm in queryset:
-        client = Client.objects.get(realm=realm)
         try:
-            django_keycloak.services.uma.synchronize_client(client=client)
+            django_keycloak.services.uma.synchronize_client(client=realm.client)
         except KeycloakClientError as e:
             if e.original_exc.response.status_code == 400:
                 modeladmin.message_user(
