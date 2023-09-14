@@ -29,12 +29,17 @@ def synchronize_resources(client, app_config):
     :type app_config: django.apps.config.AppConfig
     """
 
+    print("synchoronizing resources")
     if not app_config.models_module:
+        print("no models module")
         return
 
     uma1_client = client.uma1_api_client
 
     access_token = django_keycloak.services.client.get_access_token(client=client)
+    print("models")
+    print(app_config.get_models())
+    print("------------------------------")
 
     for klass in app_config.get_models():
         scopes = _get_all_permissions(klass._meta)
