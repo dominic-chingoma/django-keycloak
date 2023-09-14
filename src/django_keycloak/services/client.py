@@ -108,7 +108,7 @@ def get_new_access_token(client):
     return token_response, initiate_time
 
 
-def zget_access_token(client):
+def get_access_token(client):
     """
     Get access token from client's service account.
     :param django_keycloak.models.Client client:
