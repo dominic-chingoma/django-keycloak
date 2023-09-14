@@ -103,7 +103,7 @@ class Client(models.Model):
         import django_keycloak.services.client
 
         print("Client profile ________________")
-        print(django_keycloak.services.client.get_openid_client(client=self))
+        print(django_keycloak.services.client.get_openid_client(client=self).__dict__)
         print("======================================")
         return django_keycloak.services.client.get_openid_client(client=self)
 

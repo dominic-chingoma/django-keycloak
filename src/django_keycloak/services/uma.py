@@ -24,7 +24,6 @@ def synchronize_resources(client, app_config):
     :type client: django_keycloak.models.Client
     :type app_config: django.apps.config.AppConfig
     """
-    print(client.__dict__)
 
     if not app_config.models_module:
         return
